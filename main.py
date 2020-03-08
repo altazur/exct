@@ -10,7 +10,13 @@ class Application(tk.Frame):
         self.create_widgets()
 
     def open_image_file(self):
-        self.filename = tk.filedialog.askopenfilename(initialdir = '/', title = 'Select image', filetypes=(("JPEG" ,"*.jpg"), ("PNG", "*.png"), ("TIFF", "*.tiff"), ("All files", "*.")))
+        self.filename = tk.filedialog.askopenfilename(initialdir='/', title='Select image', filetypes=
+        (
+            ("JPEG","*.jpg"),
+            ("PNG", "*.png"),
+            ("TIFF", "*.tiff"),
+            ("All files", "*."))
+        )
         self.file_path_var.set(self.filename)
         self.clean_exif_save_button.config(state='active', text="Clean Exif")
 
