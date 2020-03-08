@@ -19,10 +19,6 @@ class Application(tk.Frame):
             CleanExif.return_image_without_exif(self.filename, self.filename_save)
 
     def create_widgets(self):
-        # Label widget
-        self.app_name = tk.Label(self, text='exct')
-        self.app_name.pack(side='top')
-       
         # ImageFile path widget
         self.load_file_label = tk.Label(self, text='Imagefile')
         self.load_file_label.pack(side='left')
