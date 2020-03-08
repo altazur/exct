@@ -19,23 +19,23 @@ class Application(tk.Frame):
             CleanExif.return_image_without_exif(self.filename, self.filename_save)
 
     def create_widgets(self):
+        # CleanExif button (opens 'save file' dialog)
+        self.clean_exif_save_button = tk.Button(self, text='Clean Exif', command=self.clean_exif, fg='green')
+        self.clean_exif_save_button.pack(side='bottom', pady='5')
+
         # ImageFile path widget
-        self.load_file_label = tk.Label(self, text='Imagefile')
+        self.load_file_label = tk.Label(self, text='Imagefile:')
         self.load_file_label.pack(side='left')
 
         # ImageFile entry (shows path)
         self.file_path_var = tk.StringVar()
         self.file_path_var.set("Click 'Open' to select image file")
-        self.file_path = tk.Entry(self, textvariable=self.file_path_var, state='disabled')
-        self.file_path.pack(side='right')
+        self.file_path = tk.Entry(self, textvariable=self.file_path_var, state='disabled', width=35)
+        self.file_path.pack(side='left', padx='5')
 
         # Open button
         self.open_file_button = tk.Button(self, text='Open', command=self.open_image_file)
-        self.open_file_button.pack(side='right')
-        
-        # CleanExif button (opens 'save file' dialog)
-        self.clean_exif_save_button = tk.Button(self, text='Clean Exif', command=self.clean_exif)
-        self.clean_exif_save_button.pack(side='bottom')
+        self.open_file_button.pack(side='left', padx="5")
 
 root = tk.Tk()
 app = Application(master=root)
