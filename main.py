@@ -12,15 +12,17 @@ class Application(tk.Frame):
     def open_image_file(self):
         self.filename = tk.filedialog.askopenfilename(initialdir = '/', title = 'Select image', filetypes=(("JPEG" ,"*.jpg"), ("PNG", "*.png"), ("TIFF", "*.tiff"), ("All files", "*.")))
         self.file_path_var.set(self.filename)
+        self.clean_exif_save_button.config(state='active', text="Clean Exif")
 
     def clean_exif(self):
         if self.filename is not None:
             self.filename_save = tk.filedialog.askdirectory()
             CleanExif.return_image_without_exif(self.filename, self.filename_save)
+            self.clean_exif_save_button.config(text='Done!')
 
     def create_widgets(self):
         # CleanExif button (opens 'save file' dialog)
-        self.clean_exif_save_button = tk.Button(self, text='Clean Exif', command=self.clean_exif, fg='green')
+        self.clean_exif_save_button = tk.Button(self, text='Clean Exif', command=self.clean_exif, fg='green', state='disabled')
         self.clean_exif_save_button.pack(side='bottom', pady='5')
 
         # ImageFile path widget
